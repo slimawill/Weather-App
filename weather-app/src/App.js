@@ -15,23 +15,28 @@ function App() {
       .catch((error) => console.log(error.message));
   };
 
-return (
-  <div className='app flex flex-col items-center'>
-    <h1 className="py-4 text-5xl text-white font-serif">Search Weather</h1>
-      <div className="form">
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Enter city name"
-            className="px-4 py-3"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            />
-          <button type="submit" className="px-4 py-3 bg-purple-500 text-white">
-            Search
-          </button>
-        </form>
-      </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchWeather();
+  };
+
+  return (
+    <div className='app flex flex-col items-center'>
+      <h1 className="py-4 text-5xl text-white font-serif">Search Weather</h1>
+        <div className="form">
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Enter city name"
+              className="px-4 py-3"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              />
+            <button type="submit" className="px-4 py-3 bg-purple-500 text-white">
+              Search
+            </button>
+          </form>
+        </div>
     </div>
   );
 }
