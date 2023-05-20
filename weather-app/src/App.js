@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 function App() {
 
+  const API = "6d994fb4e6fa0c9b7581cbd05a9bf307";
   const [city, setCity] = useState("New York");
   const [weather, setWeather] = useState();
 
@@ -37,6 +38,19 @@ function App() {
             </button>
           </form>
         </div>
+
+        {weather && (
+        <div className="card bg-purple-500 text-white w-[220px] h-[350px] flex flex-col justify-center items-center mt-10">
+          <h4 className="text-2xl">{weather.name}</h4>
+          <img
+            src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
+            alt=""
+            className="w-[150px]"
+          />
+          <h2 className="text-5xl font-bold mb-2">{weather.main.temp}&deg;</h2>
+          <p>{weather.weather[0].main}</p>
+        </div>
+      )}
     </div>
   );
 }
